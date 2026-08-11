@@ -432,7 +432,8 @@ html.rp-dark .rp-reflist li:target{background:#3a3520;}
   margin:0.6em 0 1em;
   background:var(--bg-content);
   font-size:0.875rem;
-  width:100%;
+  width:auto;
+  max-width:100%;
 }
 .rp-wikitable th,.rp-wikitable td{
   border:1px solid var(--b-base);
@@ -691,6 +692,7 @@ a.rp-btn:visited{color:#fff;}
   .rp-thumb{float:none;width:100%;margin:0.5em 0 1.2em;}
   .rp-main{padding:6px 16px 36px;}
   .rp-footer{padding:20px 16px 40px;}
+  .rp-wikitable{display:block;overflow-x:auto;width:100%;}
   .rp-navbox th.rp-navbox-group{width:auto;text-align:left;white-space:normal;}
   .rp-navbox,.rp-navbox tbody,.rp-navbox tr,.rp-navbox th,.rp-navbox td{display:block;width:100%;}
   .rp-sidebar{top:48px;}
