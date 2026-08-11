@@ -35,8 +35,10 @@
     <div class="rp-header-end">
       <a class="rp-hide-sm" href="Vasquez_Compatibility_Test.html">Donate</a>
       <a class="rp-hide-sm" href="mailto:rob@sailwellness.app?subject=RobPedia%20account">Create account</a>
-      <a href="mailto:rob@sailwellness.app?subject=RobPedia%20login">Log in</a>
-      <button class="rp-icon-btn" aria-label="More options">&#8943;</button>
+      <a class="rp-hide-sm" href="mailto:rob@sailwellness.app?subject=RobPedia%20login">Log in</a>
+      <button class="rp-icon-btn rp-hide-sm" aria-label="More options">&#8943;</button>
+      <button class="rp-icon-btn rp-only-sm" id="rp-search-toggle" aria-label="Search"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12.2 13.6a7 7 0 1 1 1.4-1.4l5.4 5.4-1.4 1.4-5.4-5.4zM12 8a4 4 0 1 0-8 0 4 4 0 0 0 8 0z"/></svg></button>
+      <a class="rp-icon-btn rp-only-sm" href="mailto:rob@sailwellness.app?subject=RobPedia%20login" aria-label="Log in"><svg viewBox="0 0 20 20" width="21" height="21" aria-hidden="true"><path fill="currentColor" d="M10 11c-3.3 0-6 1.8-6 4v2h12v-2c0-2.2-2.7-4-6-4zm0-1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg></a>
     </div>
   </header>
 </div>
@@ -65,6 +67,15 @@
       <li><a href="mailto:rob@sailwellness.app?subject=RobPedia%20file%20upload">Upload file</a></li>
     </ul>
   </div>
+  <div class="rp-nav-group rp-sidebar-toc"><div class="rp-nav-heading">Contents</div><div class="rp-toc-title">Contents<span class="rp-toc-hide">[hide]</span></div>
+<div class="rp-toc"><ul>
+<li><a href="#rp-top">(Top)</a></li>
+<li><a href="#Family"><span class="rp-toc-num">1</span>Family</a></li>
+<li><a href="#Miami"><span class="rp-toc-num">2</span>Miami</a></li>
+<li><a href="#Reading_and_formation"><span class="rp-toc-num">3</span>Reading and formation</a></li>
+<li><a href="#Education"><span class="rp-toc-num">4</span>Education</a></li>
+<li><a href="#References"><span class="rp-toc-num">5</span>References</a></li>
+</ul></div></div>
   <div class="rp-nav-group">
     <div class="rp-nav-heading">Tools</div>
     <ul>
@@ -96,6 +107,13 @@
           <a class="rp-tab" href="mailto:rob@sailwellness.app?subject=RobPedia%20edit">Edit</a>
           <a class="rp-tab " href="Robert_Vasquez_history.html">View history</a>
         </div>
+      </div>
+      <div class="rp-mobile-tools">
+        <a class="rp-mt-btn" href="#" aria-label="Languages"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><text x="1" y="12" font-size="11" fill="currentColor" font-family="serif">&#25991;</text><text x="11" y="20" font-size="12" fill="currentColor" font-family="serif">A</text></svg></a>
+        <span class="rp-mt-right">
+          <a class="rp-mt-btn" href="Main_Page.html" aria-label="Watch"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M12 3.6l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.8l5.9-.9z"/></svg></a>
+          <a class="rp-mt-btn" href="mailto:rob@sailwellness.app?subject=RobPedia%20edit" aria-label="Edit"><svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><path fill="currentColor" d="M4 16.6V20h3.4L17.4 10 14 6.6 4 16.6zM20 7.4c.4-.4.4-1 0-1.4l-2-2c-.4-.4-1-.4-1.4 0L15 5.6 18.4 9 20 7.4z"/></svg></a>
+        </span>
       </div>
       <h1 class="rp-title">Early life of Robert Vasquez</h1>
       <div class="rp-byline">From RobPedia, the free-ish encyclopedia</div>
@@ -241,6 +259,17 @@ Mandarin. No source has explained how these two commitments coexisted; he mainta
   /* ----- mobile menu ----- */
   var tog=d.getElementById('rp-menu-toggle'), sb=d.getElementById('rp-sidebar');
   if(tog&&sb){ tog.addEventListener('click',function(){ sb.classList.toggle('rp-open'); }); }
+
+  /* ----- mobile search toggle ----- */
+  var st=d.getElementById('rp-search-toggle'), hc=d.querySelector('.rp-header-container');
+  if(st&&hc){
+    st.addEventListener('click',function(){
+      hc.classList.toggle('rp-search-open');
+      if(hc.classList.contains('rp-search-open')){
+        var inp=d.getElementById('rp-search-input'); if(inp) inp.focus();
+      }
+    });
+  }
 
   /* ----- search + random ----- */
   var PAGES = [["Robert Vasquez", "index.html"], ["Early life of Robert Vasquez", "Early_life_of_Robert_Vasquez.html"], ["Bench press", "Bench_press.html"], ["Super network", "Super_network.html"], ["The Giver", "The_Giver.html"], ["Golf career of Robert Vasquez", "Golf_career_of_Robert_Vasquez.html"], ["Critical reception of Robert Vasquez", "Critical_reception_of_Robert_Vasquez.html"], ["Vasquez Compatibility Test", "Vasquez_Compatibility_Test.html"], ["Talk:Robert Vasquez", "Talk_Robert_Vasquez.html"], ["Robert Vasquez: Revision history", "Robert_Vasquez_history.html"], ["Main Page", "Main_Page.html"]];

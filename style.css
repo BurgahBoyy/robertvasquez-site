@@ -119,10 +119,16 @@ img{max-width:100%;height:auto;}
 .rp-header-end a{white-space:nowrap;}
 .rp-header-end .rp-hl-bold{font-weight:700;}
 .rp-icon-btn{
-  width:32px;height:32px;border:none;background:transparent;cursor:pointer;
-  color:var(--c-subtle);border-radius:2px;font-size:16px;line-height:1;
+  width:34px;height:34px;border:none;background:transparent;cursor:pointer;
+  color:var(--c-subtle);border-radius:50%;font-size:16px;line-height:1;
+  display:flex;align-items:center;justify-content:center;padding:0;
 }
-.rp-icon-btn:hover{background:var(--bg-neutral);}
+.rp-icon-btn:hover{background:var(--bg-neutral);text-decoration:none;}
+a.rp-icon-btn,a.rp-icon-btn:visited{color:var(--c-subtle);}
+.rp-only-sm{display:none !important;}
+
+/* ---- mobile tools row (languages / watch / edit) ---- */
+.rp-mobile-tools{display:none;}
 
 /* ---------- page container / grid ---------- */
 .rp-page{
@@ -177,7 +183,14 @@ img{max-width:100%;height:auto;}
   min-width:0;
   padding:12px 32px 48px;
   max-width:calc(var(--content-max) + 64px);
+  display:flex;
+  flex-direction:column;
 }
+.rp-main > .rp-tabs{order:1;}
+.rp-main > .rp-mobile-tools{order:2;}
+.rp-main > .rp-title{order:3;}
+.rp-main > .rp-byline{order:4;}
+.rp-main > .rp-body{order:5;}
 
 /* ---------- TOC ---------- */
 .rp-toc-col{
@@ -624,20 +637,74 @@ a.rp-btn:visited{color:#fff;}
   .rp-main{padding:12px 20px 40px;max-width:100%;}
 }
 @media(max-width:640px){
+  /* --- header: hamburger | logo | search icon | account icon --- */
+  .rp-header-container{background:var(--bg-interactive);border-bottom:1px solid var(--b-subtle);}
+  .rp-header{gap:4px;padding:0 6px;height:48px;}
   .rp-tagline{display:none;}
-  .rp-header{gap:6px;padding:0 10px;}
-  .rp-header-end .rp-hide-sm{display:none;}
+  .rp-wordmark{font-size:21px;}
+  .rp-logo{gap:7px;margin-right:auto;}
+  .rp-logo svg{width:30px;height:30px;}
+  .rp-menu-toggle{width:38px;height:38px;font-size:21px;color:var(--c-base);}
+  .rp-header-end{gap:2px;}
+  .rp-hide-sm{display:none !important;}
+  .rp-only-sm{display:flex !important;}
+  .rp-icon-btn{width:38px;height:38px;color:var(--c-base);}
+  a.rp-icon-btn,a.rp-icon-btn:visited{color:var(--c-base);}
+  /* search collapses to an icon; tapping it opens a full-width row */
+  .rp-search{
+    display:none;order:9;flex-basis:100%;max-width:100%;margin:0 0 8px;
+  }
+  .rp-header-container.rp-search-open .rp-header{height:auto;flex-wrap:wrap;padding-bottom:2px;}
+  .rp-header-container.rp-search-open .rp-search{display:block;}
+
+  /* --- article head: title, then tabs, then icon row (Minerva order) --- */
+  .rp-main > .rp-title{order:1;}
+  .rp-main > .rp-tabs{order:2;}
+  .rp-main > .rp-mobile-tools{order:3;}
+  .rp-main > .rp-byline{order:4;}
+  .rp-title{font-size:1.75rem;border-bottom:none;padding-bottom:0;margin:10px 0 12px;}
+  .rp-byline{display:none;}
+  .rp-body{padding-top:14px;}
+  .rp-tabs{border-bottom:1px solid var(--b-muted);align-items:stretch;}
+  .rp-tabs-right{display:none;}
+  .rp-tab{padding:8px 4px 9px;margin-right:20px;border:none;}
+  .rp-tab.rp-tab-active{
+    background:transparent;border:none;border-radius:0;margin-bottom:-1px;
+    border-bottom:2px solid var(--c-base);font-weight:400;
+  }
+  .rp-mobile-tools{
+    display:flex;align-items:center;justify-content:space-between;
+    border-bottom:1px solid var(--b-muted);padding:2px 0;
+  }
+  .rp-mt-right{display:flex;align-items:center;gap:6px;}
+  .rp-mt-btn{
+    display:flex;align-items:center;justify-content:center;
+    width:40px;height:40px;color:var(--c-base);border-radius:50%;
+  }
+  .rp-mt-btn:hover{background:var(--bg-neutral);text-decoration:none;}
+  a.rp-mt-btn,a.rp-mt-btn:visited{color:var(--c-base);}
+
+  /* contents lives in the hamburger menu on phones, like Wikipedia mobile */
+  .rp-toc-col{display:none;}
+
   .rp-infobox{float:none;width:100%;margin:0 0 1.2em;}
   .rp-thumb{float:none;width:100%;margin:0.5em 0 1.2em;}
-  .rp-title{font-size:1.55rem;}
-  .rp-main{padding:10px 14px 36px;}
-  .rp-toc-col{padding:12px 14px 0;}
-  .rp-footer{padding:20px 14px 40px;}
+  .rp-main{padding:6px 16px 36px;}
+  .rp-footer{padding:20px 16px 40px;}
   .rp-navbox th.rp-navbox-group{width:auto;text-align:left;white-space:normal;}
   .rp-navbox,.rp-navbox tbody,.rp-navbox tr,.rp-navbox th,.rp-navbox td{display:block;width:100%;}
-  .rp-search{margin:0 4px;}
+  .rp-sidebar{top:48px;}
 }
 
 @media (prefers-reduced-motion:reduce){
   .rp-network{animation:none;}
+}
+
+/* ---- phone-only Contents inside the hamburger menu ---- */
+.rp-sidebar-toc{display:none;}
+@media(max-width:640px){
+  .rp-sidebar-toc{display:block;}
+  .rp-sidebar-toc .rp-toc-title{display:none;}
+  .rp-sidebar-toc .rp-toc{border:none;background:transparent;padding:0;display:block !important;}
+  .rp-sidebar-toc .rp-toc li a{padding:6px 8px;}
 }
